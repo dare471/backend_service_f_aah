@@ -9,15 +9,18 @@ Route::group([
     'prefix' => 'auth',
 
 ], function () {
+    //Группа маршрутов для сотрудиников
     Route::post('login', 'AuthController@login');
-    Route::post('login/client', 'ClientAuthController@login');
     Route::post('register', 'AuthController@register');
-    Route::post('register/client', 'ClientAuthController@register');
     Route::post('logout', 'AuthController@logout');
-    Route::post('logout/client', 'ClientAuthController@logout');
     Route::get('profile', 'AuthController@userProfile'); 
-    Route::get('profile/client', 'ClientAuthController@userProfile'); 
     Route::post('refresh', 'AuthController@refresh');
+
+    //Группа маршрутов для клиентов 
+    Route::post('login/client', 'ClientAuthController@login');
+    Route::post('register/client', 'ClientAuthController@register');
+    Route::post('logout/client', 'ClientAuthController@logout');
+    Route::get('profile/client', 'ClientAuthController@userProfile'); 
     Route::post('refresh/client', 'ClientAuthController@refresh');
 });
 
