@@ -23,8 +23,8 @@ class SmsMessageController extends Controller
 
     private function sendSmsApi($phoneNumber, $message)
     {
-        $login = 'Test'; // Укажите ваш логин
-        $password = 'Testov'; // Укажите ваш пароль
+        $login = 'AlemAgro'; // Укажите ваш логин
+        $password = 'Alemagro2021'; // Укажите ваш пароль
 
         // Отправка запроса на API сервиса SMS
         $response = Http::post('https://smsc.kz/rest/send/', [

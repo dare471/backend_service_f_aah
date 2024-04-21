@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\client\send_sms\SmsMessage;
+use App\Http\Controllers\client\send_sms\SmsMessageController;
 use Illuminate\Http\Request;
 use App\Models\ClientAuth;
 use App\Models\client\profile\Profile;
@@ -9,6 +11,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ClientAuthController extends Controller
 {
+    // авторизация клиента login: email phone bin, Password остается прежним
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -29,8 +32,7 @@ class ClientAuthController extends Controller
         return $this->respondWithToken($token);
     }
     
-    
-
+    //регистрация клиента обязательные параметры
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -52,13 +54,18 @@ class ClientAuthController extends Controller
             'email' => $request->email, // Проверьте, что email действительно передается сюда
             'password' => bcrypt($request->password),
         ]);
+
+        // При регистрации создает запись профиля в таблице app_profile
+        
         Profile::create([
             'client_id' => $client->id
         ]);
         $token = JWTAuth::fromUser($client);
+        SmsMessageController::sendVerificationCode($client); // Отправка SMS кода
         return response()->json(['token' => $token]);
     }
 
+    //Мульти логин для авторизации 
     protected function attemptLogin(Request $request)
     {
         $credentials = $request->only('email', 'phone', 'bin', 'password');
@@ -75,7 +82,7 @@ class ClientAuthController extends Controller
         return false;
     }
     
-
+    // response token
     protected function respondWithToken($token)
     {
         return response()->json([
@@ -85,6 +92,7 @@ class ClientAuthController extends Controller
         ]);
     }
 
+    // Выдает по токену информацию из модели Client with Profile
     public function userProfile(Request $request)
     {
         try {
@@ -94,6 +102,23 @@ class ClientAuthController extends Controller
         } catch (\Exception $e) {
             return response()->json(['error' => 'user_not_found'], 404);
         }
+    }
+
+    //Подтверждение верфикации по смс
+    public function verifyCode(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required|string',
+            'code' => 'required|string'
+        ]);
+
+        $client = ClientAuth::where('phone', $request->phone)->firstOrFail();
+        if ($client->sms_verification_code === $request->code && now()->subMinutes(10)->lt($client->sms_verification_code_sent_at)) {
+            $client->update(['sms_verified_at' => now()]);
+            return response()->json(['message' => 'Phone number verified']);
+        }
+
+        return response()->json(['error' => 'Invalid or expired verification code'], 401);
     }
 
 }
