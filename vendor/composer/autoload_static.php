@@ -755,21 +755,15 @@ class ComposerStaticInite2345f660dc3b5c0f2799c54029eefa1
         'App\\Events\\MessageNotification' => __DIR__ . '/../..' . '/app/Events/MessageNotification.php',
         'App\\Events\\YourBroadcastEvent' => __DIR__ . '/../..' . '/app/Events/YourBroadcastEvent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-<<<<<<< HEAD
-=======
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/user/auth/AuthController.php',
         'App\\Http\\Controllers\\CServiceForOnecController' => __DIR__ . '/../..' . '/app/Http/Controllers/CServiceForOnecController.php',
         'App\\Http\\Controllers\\ClientAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/client/auth/ClientAuthController.php',
->>>>>>> 270ea2ddf66fc0c1940633d5ffc8dde0c3b6c9e0
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\UtilXMLController' => __DIR__ . '/../..' . '/app/Http/Controllers/UtilXMLController.php',
-<<<<<<< HEAD
         'App\\Http\\Controllers\\client\\clientprofile\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/client/clientprofile/ProfileController.php',
-=======
         'App\\Http\\Controllers\\VisitMController' => __DIR__ . '/../..' . '/app/Http/Controllers/VisitMController.php',
         'App\\Http\\Controllers\\WorkSpaceMobileController' => __DIR__ . '/../..' . '/app/Http/Controllers/WorkSpaceMobileController.php',
         'App\\Http\\Controllers\\client\\profile\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/client/profile/ProfileController.php',
->>>>>>> 270ea2ddf66fc0c1940633d5ffc8dde0c3b6c9e0
         'App\\Http\\Controllers\\client\\order\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/client/order/OrderController.php',
         'App\\Http\\Controllers\\client\\order\\OrderDetailController' => __DIR__ . '/../..' . '/app/Http/Controllers/client/order/OrderDetailController.php',
         'App\\Http\\Controllers\\user\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/user/DashboardController.php',

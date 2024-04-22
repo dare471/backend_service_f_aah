@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\client\send_sms\SmsMessage;
 use App\Http\Controllers\client\send_sms\SmsMessageController;
 use Illuminate\Http\Request;
 use App\Models\ClientAuth;
 use App\Models\client\profile\Profile;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Carbon;
 
 class ClientAuthController extends Controller
 {
@@ -35,6 +35,7 @@ class ClientAuthController extends Controller
     //регистрация клиента обязательные параметры
     public function register(Request $request)
     {
+        $controller = new SmsMessageController();
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'bin' => 'required|string|unique:clients',
@@ -61,7 +62,8 @@ class ClientAuthController extends Controller
             'client_id' => $client->id
         ]);
         $token = JWTAuth::fromUser($client);
-        SmsMessageController::sendVerificationCode($client); // Отправка SMS кода
+  
+        $controller->sendVerificationCode($client); // Отправка SMS кода
         return response()->json(['token' => $token]);
     }
 
@@ -114,7 +116,12 @@ class ClientAuthController extends Controller
 
         $client = ClientAuth::where('phone', $request->phone)->firstOrFail();
         if ($client->sms_verification_code === $request->code && now()->subMinutes(10)->lt($client->sms_verification_code_sent_at)) {
-            $client->update(['sms_verified_at' => now()]);
+            $client->update([
+                'sms_verification_code_sent_at' => now(), 
+                'phone_verified_at' => Carbon::now()->toDateTimeString(),
+                'phone_verified_status' => true,
+                
+            ]);
             return response()->json(['message' => 'Phone number verified']);
         }
 
