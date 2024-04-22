@@ -15,6 +15,7 @@ class OrderDetail extends Migration
     {
         Schema::create('order_detail', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('order_id');
             $table->boolean('sign_in');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
@@ -23,6 +24,7 @@ class OrderDetail extends Migration
             $table->float('count');
             $table->float('price');
             $table->boolean('actual_price');
+            $table->foreign('order_id')->references('id')->on('order')->onDelete('cascade');
             $table->float('recomendated_price');
             $table->uuid('delivery_id');
         });
