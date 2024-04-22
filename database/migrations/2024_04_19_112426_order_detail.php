@@ -19,8 +19,7 @@ class OrderDetail extends Migration
             $table->boolean('sign_in');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
-            $table->integer('client_id')->nullable();
-            $table->integer('product_id');
+            $table->uuid('product_id');
             $table->float('count');
             $table->float('price');
             $table->boolean('actual_price');

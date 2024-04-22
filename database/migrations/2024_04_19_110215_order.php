@@ -19,10 +19,12 @@ class Order extends Migration
             $table->integer('cretated_by');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
-            $table->integer('client_id')->nullable();
+            $table->uuid('client_id');
             $table->boolean('main_order')->default(true);
             $table->uuid('children_order')->nullable();
             $table->uuid('order_detail');
+            $table->boolean('delivery_needed')->default(false);
+            $table->uuid('delivery_id');
         });
     }
 
