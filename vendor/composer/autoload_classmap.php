@@ -157,21 +157,15 @@ return array(
     'App\\Events\\MessageNotification' => $baseDir . '/app/Events/MessageNotification.php',
     'App\\Events\\YourBroadcastEvent' => $baseDir . '/app/Events/YourBroadcastEvent.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-<<<<<<< HEAD
-=======
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/user/auth/AuthController.php',
     'App\\Http\\Controllers\\CServiceForOnecController' => $baseDir . '/app/Http/Controllers/CServiceForOnecController.php',
     'App\\Http\\Controllers\\ClientAuthController' => $baseDir . '/app/Http/Controllers/client/auth/ClientAuthController.php',
->>>>>>> 270ea2ddf66fc0c1940633d5ffc8dde0c3b6c9e0
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\UtilXMLController' => $baseDir . '/app/Http/Controllers/UtilXMLController.php',
-<<<<<<< HEAD
     'App\\Http\\Controllers\\client\\clientprofile\\ProfileController' => $baseDir . '/app/Http/Controllers/client/clientprofile/ProfileController.php',
-=======
     'App\\Http\\Controllers\\VisitMController' => $baseDir . '/app/Http/Controllers/VisitMController.php',
     'App\\Http\\Controllers\\WorkSpaceMobileController' => $baseDir . '/app/Http/Controllers/WorkSpaceMobileController.php',
     'App\\Http\\Controllers\\client\\profile\\ProfileController' => $baseDir . '/app/Http/Controllers/client/profile/ProfileController.php',
->>>>>>> 270ea2ddf66fc0c1940633d5ffc8dde0c3b6c9e0
     'App\\Http\\Controllers\\client\\order\\OrderController' => $baseDir . '/app/Http/Controllers/client/order/OrderController.php',
     'App\\Http\\Controllers\\client\\order\\OrderDetailController' => $baseDir . '/app/Http/Controllers/client/order/OrderDetailController.php',
     'App\\Http\\Controllers\\user\\DashboardController' => $baseDir . '/app/Http/Controllers/user/DashboardController.php',
@@ -198,7 +192,7 @@ return array(
     'App\\Jobs\\YourJobName' => $baseDir . '/app/Jobs/YourJobName.php',
     'App\\Listeners\\SendPodcastNotification' => $baseDir . '/app/Listeners/SendPodcastNotification.php',
     'App\\Models\\Client' => $baseDir . '/app/Models/Client.php',
-    'App\\Models\\ClientAuth' => $baseDir . '/app/Models/ClientAuth.php',
+    'App\\Models\\ClientAuth' => $baseDir . '/app/Models/client/auth/ClientAuth.php',
     'App\\Models\\ClientContact' => $baseDir . '/app/Models/ClientContact.php',
     'App\\Models\\ClientCrop' => $baseDir . '/app/Models/ClientCrop.php',
     'App\\Models\\ClientNote' => $baseDir . '/app/Models/ClientNote.php',

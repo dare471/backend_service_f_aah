@@ -790,7 +790,7 @@ class ComposerStaticInite2345f660dc3b5c0f2799c54029eefa1
         'App\\Jobs\\YourJobName' => __DIR__ . '/../..' . '/app/Jobs/YourJobName.php',
         'App\\Listeners\\SendPodcastNotification' => __DIR__ . '/../..' . '/app/Listeners/SendPodcastNotification.php',
         'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
-        'App\\Models\\ClientAuth' => __DIR__ . '/../..' . '/app/Models/ClientAuth.php',
+        'App\\Models\\ClientAuth' => __DIR__ . '/../..' . '/app/Models/client/auth/ClientAuth.php',
         'App\\Models\\ClientContact' => __DIR__ . '/../..' . '/app/Models/ClientContact.php',
         'App\\Models\\ClientCrop' => __DIR__ . '/../..' . '/app/Models/ClientCrop.php',
         'App\\Models\\ClientNote' => __DIR__ . '/../..' . '/app/Models/ClientNote.php',

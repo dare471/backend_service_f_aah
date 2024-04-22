@@ -109,7 +109,7 @@ class ClientAuthController extends Controller
             // Возвращаем пользователя и его профиль в JSON формате
             return response()->json([
                 'head' => $user_pr,
-                'property' => $profile
+                'properties' => $profile
             ]);
         } catch (\Exception $e) {
             return response()->json(['error' => 'user_not_found'], 404);

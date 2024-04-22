@@ -88,8 +88,16 @@ class AuthController extends Controller
     public function userProfile(Request $request)
     {
         try {
-            $user = JWTAuth::parseToken()->authenticate();
-            return response()->json(['user' => $user]);
+            $user = auth('api')->user();
+            if (!$user) {
+                return response()->json(['error' => 'user_not_found'], 404);
+            }
+            // Выполняем запрос к модели Profile, чтобы получить профиль пользователя
+          
+            // Возвращаем пользователя и его профиль в JSON формате
+            return response()->json([
+                'head' => $user
+            ]);
         } catch (\Exception $e) {
             return response()->json(['error' => 'user_not_found'], 404);
         }

@@ -16,9 +16,9 @@ Route::group([
     // Использование Route::resource для каждого подресурса
     Route::prefix('/{clientId}')->group(function () {
         // Контакты клиентов
-        Route::resource('/contact', 'ClientContactController')->only([
-            'index', 'show', 'store', 'update', 'destroy'
-        ]);
+        // Route::resource('/contact', 'profile\ClientContactController')->only([
+        //     'index', 'show', 'store', 'update', 'destroy'
+        // ]);
 
         // Культуры клиентов
         Route::resource('/crop', 'ClientCropController')->only([
@@ -26,9 +26,9 @@ Route::group([
         ]);
 
         // Комментарии к клиенту
-        Route::resource('/note', 'ClientNoteController')->only([
-            'index', 'show', 'store', 'update', 'destroy'
-        ]);
+        // Route::resource('/note', 'note\ClientNoteController')->only([
+        //     'index', 'show', 'store', 'update', 'destroy'
+        // ]);
 
         // Визиты к клиенту
         Route::resource('/visit', 'ClientVisitController')->only([
