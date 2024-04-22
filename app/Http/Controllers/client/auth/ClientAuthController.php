@@ -98,13 +98,24 @@ class ClientAuthController extends Controller
     public function userProfile(Request $request)
     {
         try {
-            // Убедитесь, что используете правильный guard для аутентификации клиентов
             $user = auth('client')->user();
-            return response()->json(['user' => $user]);
+            if (!$user) {
+                return response()->json(['error' => 'user_not_found'], 404);
+            }
+
+            // Выполняем запрос к модели Profile, чтобы получить профиль пользователя
+            $profile = Profile::where('client_id', $user->id)->first();
+            $user_pr = ClientAuth::where('bin', $user->bin)->first();
+            // Возвращаем пользователя и его профиль в JSON формате
+            return response()->json([
+                'head' => $user_pr,
+                'property' => $profile
+            ]);
         } catch (\Exception $e) {
             return response()->json(['error' => 'user_not_found'], 404);
         }
     }
+
 
     //Подтверждение верфикации по смс
     public function verifyCode(Request $request)

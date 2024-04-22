@@ -17,8 +17,8 @@ class Client extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('bin')->unique();
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->timestamp('phone_verified_at')->nullable();
             $table->boolean('phone_verified_status')->default(false);
             $table->timestamp('email_verified_at')->nullable();

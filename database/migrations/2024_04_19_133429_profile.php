@@ -14,7 +14,7 @@ class Profile extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('client_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('client_id');  // Использование uuid для внешнего ключа
             $table->string('regionId')->nullable();
@@ -34,6 +34,6 @@ class Profile extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('client_profiles');
     }
 }

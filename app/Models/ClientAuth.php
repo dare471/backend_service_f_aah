@@ -12,7 +12,7 @@ class ClientAuth extends Authenticatable implements JWTSubject
     protected $table = 'clients'; // Указываем, что модель должна использовать таблицу 'clients'
     public $incrementing = false;  // Указывает Laravel, что ID не автоинкрементное
     protected $keyType = 'string';  // Тип ключа - строка
-    protected $fillable = ['name', 'email', 'phone', 'bin', 'password','sms_verification_code', 'sms_verification_code_sent_at'];
+    protected $fillable = ['id','name', 'email', 'phone', 'bin', 'password','sms_verification_code', 'sms_verification_code_sent_at'];
     
     protected static function boot()
     {

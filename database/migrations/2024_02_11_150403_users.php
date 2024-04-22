@@ -18,8 +18,8 @@ class Users extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('bin')->unique();
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->boolean('activated_status')->default(false);
             $table->timestamp('activated_status_at')->nullable();
             $table->string('password');
