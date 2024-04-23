@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class Contact extends Migration
@@ -14,7 +15,7 @@ class Contact extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->uuid('client_id');
             $table->string('name');
             $table->string('email')->nullable();

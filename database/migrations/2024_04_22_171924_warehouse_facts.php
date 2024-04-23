@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class WarehouseFacts extends Migration
@@ -14,7 +15,7 @@ class WarehouseFacts extends Migration
     public function up()
     {
         Schema::create('warehouse_facts', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->uuid('warehouse_id');
             $table->string('created_at')->default(now());
             $table->string('updated_at')->default(now());

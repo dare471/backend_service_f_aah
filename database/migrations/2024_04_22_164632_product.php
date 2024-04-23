@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class Product extends Migration
@@ -14,7 +15,7 @@ class Product extends Migration
     public function up()
     {
         Schema::create('product_ref', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->uuid('created_by');
             $table->boolean('activity');
             $table->string('created_at')->default(now());

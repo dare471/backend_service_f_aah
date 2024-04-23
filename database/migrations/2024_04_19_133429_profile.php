@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Profile extends Migration
 {
@@ -15,7 +16,7 @@ class Profile extends Migration
     public function up()
     {
         Schema::create('client_profiles', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->uuid('client_id');  // Использование uuid для внешнего ключа
             $table->string('regionId')->nullable();
             $table->string('districtId')->nullable();

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateMobileFilesTable extends Migration
@@ -14,7 +15,7 @@ class CreateMobileFilesTable extends Migration
     public function up()
     {
         Schema::create('mobile_files', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->timestamp('created_date');
             $table->timestamp('updated_date')->nullable();
             $table->timestamp('deactivated')->nullable();

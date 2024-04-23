@@ -1,12 +1,8 @@
 <?php
-namespace App\Http\Controllers;
-use App\Models\Parser;
-use app\Models\Coordinates;
+namespace App\Http\Controllers\outsideService;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Mail;
-use App\Http\Resources\DogovorResource;
 
 
 class UtilXMLController extends Controller 

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\client\send_sms;
 
 use App\Http\Controllers\Controller;
-use App\Models\ClientAuth; // Пример модели, убедитесь, что правильно указали путь
+use App\Models\client\auth\ClientAuth; // Пример модели, убедитесь, что правильно указали путь
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Carbon;
 
 class SmsMessageController extends Controller

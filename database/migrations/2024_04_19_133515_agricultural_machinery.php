@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class AgriculturalMachinery extends Migration
@@ -14,7 +15,7 @@ class AgriculturalMachinery extends Migration
     public function up()
     {
         Schema::create('agricultural_machinery', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->uuid('client_id');
             $table->string('type');  // Тип техники, например, трактор, комбайн и т.д.
             $table->string('model');

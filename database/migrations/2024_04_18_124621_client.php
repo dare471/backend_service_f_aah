@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class Client extends Migration
@@ -14,7 +15,7 @@ class Client extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->string('name');
             $table->string('bin')->unique();
             $table->string('email')->unique();

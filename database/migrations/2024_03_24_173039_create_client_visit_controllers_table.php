@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateClientVisitControllersTable extends Migration
@@ -14,7 +15,7 @@ class CreateClientVisitControllersTable extends Migration
     public function up()
     {
         Schema::create('client_visit', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->unsignedBigInteger('clientId');
             $table->unsignedBigInteger('createdBy');
             $table->timestamp('createdTime')->nullable();

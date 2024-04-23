@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+
 
 class Warehouse extends Migration
 {
@@ -14,7 +16,7 @@ class Warehouse extends Migration
     public function up()
     {
         Schema::create('warehouse', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->uuid('created_by');
             $table->boolean('activity')->default(true);
             $table->string('name');

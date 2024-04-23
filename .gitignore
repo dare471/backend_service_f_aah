@@ -1,7 +1,7 @@
 final_2020.geojson
 final_2020.geojson
-routes/auth/auth.php
-app/Http/Controllers/client/auth/ClientAuthController.php
+# routes/auth/auth.php
+# app/Http/Controllers/client/auth/ClientAuthController.php
 app/Console/Kernel.php
-app/Http/Controllers/client/clientprofile/ProfileController.php
+# app/Http/Controllers/client/clientprofile/ProfileController.php
 .env

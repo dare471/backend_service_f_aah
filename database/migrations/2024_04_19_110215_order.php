@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class Order extends Migration
@@ -14,7 +15,7 @@ class Order extends Migration
     public function up()
     {
         Schema::create('order', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->boolean('status');
             $table->integer('cretated_by');
             $table->timestamp('created_at');

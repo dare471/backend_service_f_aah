@@ -1,9 +1,10 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\client\auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\client\send_sms\SmsMessageController;
 use Illuminate\Http\Request;
-use App\Models\ClientAuth;
+use App\Models\client\auth\ClientAuth;
 use App\Models\client\profile\Profile;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;

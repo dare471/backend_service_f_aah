@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class OrderDetail extends Migration
@@ -14,7 +15,7 @@ class OrderDetail extends Migration
     public function up()
     {
         Schema::create('order_detail', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->uuid('order_id');
             $table->boolean('sign_in');
             $table->timestamp('created_at');

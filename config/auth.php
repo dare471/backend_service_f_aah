@@ -79,7 +79,7 @@ return [
         ],
         'client' => [
             'driver' => 'eloquent',
-            'model' => App\Models\ClientAuth::class,
+            'model' => App\Models\client\auth\ClientAuth::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

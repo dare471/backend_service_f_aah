@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class Delivery extends Migration
@@ -14,7 +15,7 @@ class Delivery extends Migration
     public function up()
     {
         Schema::create('devlivery_facts', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->string('created_at')->now();
             $table->string('updated_at')->now();
             $table->uuid('order_id');

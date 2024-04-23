@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Users extends Migration
 {
@@ -15,7 +16,7 @@ class Users extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->primary()->default(DB::raw('NEWID()'));
             $table->string('name');
             $table->string('bin')->unique();
             $table->string('email')->unique();
