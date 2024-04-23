@@ -14,7 +14,7 @@ class CreateSentEmailsTable extends Migration
     public function up()
     {
         Schema::create('sent_emails', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('orderGuid')->unique();
             $table->string('order')->unique();
             $table->string('clientName');

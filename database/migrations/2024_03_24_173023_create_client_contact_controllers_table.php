@@ -14,7 +14,7 @@ class CreateClientContactControllersTable extends Migration
     public function up()
     {
         Schema::create('client_contact', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->unsignedBigInteger('clientId');
             $table->unsignedBigInteger('createdBy');
             $table->timestamp('createdTime')->nullable();

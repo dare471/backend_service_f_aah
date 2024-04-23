@@ -14,7 +14,7 @@ class RouteFacts extends Migration
     public function up()
     {
         Schema::create('route_facts', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->uuid('order_id');
             $table->uuid('region_to');
             $table->uuid('district_to');

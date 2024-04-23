@@ -15,7 +15,7 @@ class Profile extends Migration
     public function up()
     {
         Schema::create('client_profiles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id')->primary();
             $table->uuid('client_id');  // Использование uuid для внешнего ключа
             $table->string('regionId')->nullable();
             $table->string('districtId')->nullable();

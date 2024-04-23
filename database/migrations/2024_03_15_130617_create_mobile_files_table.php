@@ -14,7 +14,7 @@ class CreateMobileFilesTable extends Migration
     public function up()
     {
         Schema::create('mobile_files', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->timestamp('created_date');
             $table->timestamp('updated_date')->nullable();
             $table->timestamp('deactivated')->nullable();

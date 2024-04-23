@@ -14,7 +14,7 @@ class Culture extends Migration
     public function up()
     {
         Schema::create('culture', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
         });
     }

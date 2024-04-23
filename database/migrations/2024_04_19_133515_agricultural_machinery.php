@@ -14,7 +14,7 @@ class AgriculturalMachinery extends Migration
     public function up()
     {
         Schema::create('agricultural_machinery', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->uuid('client_id');
             $table->string('type');  // Тип техники, например, трактор, комбайн и т.д.
             $table->string('model');
