@@ -13,7 +13,7 @@ class ClientAuth extends Authenticatable implements JWTSubject
     public $incrementing = false;  // Указывает Laravel, что ID не автоинкрементное
     protected $keyType = 'string';  // Тип ключа - строка
     protected $fillable = ['id','name', 'email', 'phone', 'bin', 'password','sms_verification_code', 'sms_verification_code_sent_at'];
-    
+
     protected static function boot()
     {
         parent::boot();
@@ -29,7 +29,7 @@ class ClientAuth extends Authenticatable implements JWTSubject
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }

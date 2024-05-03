@@ -10,4 +10,5 @@ require_once __DIR__.'/user/user.php';
 
 // Роут без применения middleware 'auth:api'
 Route::post('/maps/coordinate_receive', 'App\Http\Controllers\outsideService\UtilXMLController@coordinate_to_from');
+Route::post('/baf', 'App\Http\Controllers\outsideService\BafController@MainRoute');
 

@@ -15,24 +15,24 @@ class ClientAuthController extends Controller
     // авторизация клиента login: email phone bin, Password остается прежним
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), array(
             'email' => 'sometimes|required_without_all:phone,bin|email',
             'phone' => 'sometimes|required_without_all:email,bin',
             'bin' => 'sometimes|required_without_all:email,phone',
             'password' => 'required|string|min:6',
-        ]);
-    
+        ));
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-    
+
         if (!$token = $this->attemptLogin($request)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-    
+
         return $this->respondWithToken($token);
     }
-    
+
     //регистрация клиента обязательные параметры
     public function register(Request $request)
     {
@@ -44,11 +44,11 @@ class ClientAuthController extends Controller
             'email' => 'required|email|min:6', // Убедитесь, что указано правильное имя таблицы
             'password' => 'required|string|min:6|confirmed',
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-      
+
         $client = ClientAuth::create([
             'name' => $request->name,
             'bin' => $request->bin,
@@ -58,21 +58,21 @@ class ClientAuthController extends Controller
         ]);
 
         // При регистрации создает запись профиля в таблице app_profile
-        
+
         Profile::create([
             'client_id' => $client->id
         ]);
         $token = JWTAuth::fromUser($client);
-  
+
         $controller->sendVerificationCode($client); // Отправка SMS кода
         return response()->json(['token' => $token]);
     }
 
-    //Мульти логин для авторизации 
+    //Мульти логин для авторизации
     protected function attemptLogin(Request $request)
     {
         $credentials = $request->only('email', 'phone', 'bin', 'password');
-    
+
         foreach (['email', 'phone', 'bin'] as $field) {
             if (!empty($credentials[$field])) {
                 // Указываем использование новой гвардии client_api
@@ -81,10 +81,10 @@ class ClientAuthController extends Controller
                 }
             }
         }
-    
+
         return false;
     }
-    
+
     // response token
     protected function respondWithToken($token)
     {
@@ -129,10 +129,10 @@ class ClientAuthController extends Controller
         $client = ClientAuth::where('phone', $request->phone)->firstOrFail();
         if ($client->sms_verification_code === $request->code && now()->subMinutes(10)->lt($client->sms_verification_code_sent_at)) {
             $client->update([
-                'sms_verification_code_sent_at' => now(), 
+                'sms_verification_code_sent_at' => now(),
                 'phone_verified_at' => Carbon::now()->toDateTimeString(),
                 'phone_verified_status' => true,
-                
+
             ]);
             return response()->json(['message' => 'Phone number verified']);
         }
