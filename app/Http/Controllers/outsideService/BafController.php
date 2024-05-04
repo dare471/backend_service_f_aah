@@ -60,7 +60,7 @@ class BafController extends Controller
         ->join('NOMENKLATURA as n', 'n.GUID', 'p.NOMENKLATURA_GUID')
         ->where('DOGOVOR_GUID', DB::raw('CAST('.$request->guidContract.' AS UNIQUEIDENTIFIER)'))
         ->get();
-       //return $q;
+        //return $q;
         return bafContractDetail::collection($q)->all();
     }
 }
