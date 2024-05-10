@@ -19,6 +19,7 @@ class bafContractListl extends JsonResource
             "name" => $this->name,
             "signatureStatus" => $this->signatureStatus == "Не подписан" ? false : true,
             "deliveryMethod" => $this->deliveryMethod,
+            "documentType" => $this->documentType == null ? "Не указан тип документа" : $this->documentType,
             "sum" => (float)$this->sum,
             "paid" => (float)$this->sumPaid,
             "debt" => (float)$this->sum - (float)$this->sumPaid

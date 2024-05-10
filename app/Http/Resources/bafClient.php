@@ -31,24 +31,32 @@ class bafClient extends JsonResource
     {
         $q = DB::connection('L1')
             ->table('DOGOVORY_KONTRAGENTOV as d')
-            ->select(DB::raw('CONVERT(NVARCHAR(max), d.GUID, 1) as guidContract'), 'd.NAIMENOVANIE as name', 
-                     DB::raw('SUM(v.SUMMA_VYRUCHKI) as sumV'), 
-                     DB::raw('SUM(v.STOIMOST) as sumVV'), 
+            ->select(DB::raw('CONVERT(NVARCHAR(max), d.GUID, 1) as guidContract'), 'd.NAIMENOVANIE as name',
+                     'd.DATA_NACHALA_DEYSTVIYA as date', 
                      DB::raw('SUM(r.SUMMA_KZT) as sumPaid'), 
                      DB::raw('s.NAIMENOVANIE as season'), 
                      'd.STATUS_PODPISANIYA as signatureStatus', 'd.SPOSOB_DOSTAVKI as deliveryMethod', 
-                     DB::raw('SUM(d.SUMMA_KZ_TG) as sum'))
-            ->join('RASCHETY_S_KLIENTAMI_PO_DOKUMENTAM as r', 'r.DOGOVOR_GUID', 'd.GUID')
+                     DB::raw('SUM(d.SUMMA_KZ_TG) as sum'),
+                     DB::raw('TIP_DOKUMENTA as documentType')
+                     )
+            ->leftJoin('RASCHETY_S_KLIENTAMI_PO_DOKUMENTAM as r', 'r.DOGOVOR_GUID', 'd.GUID')
             ->join('SEZONY as s', 's.GUID', 'd.SEZON_GUID')
-            ->join('VYRUCHKA_I_SEBESTOIMOST_PRODAZH as v', 'v.DOGOVOR_GUID', 'd.GUID')
-            ->where('d.KONTRAGENT_GUID', DB::raw('CAST('.$guid.' AS UNIQUEIDENTIFIER)'))
-            ->where('s.NAIMENOVANIE', $this->getSeason($request->season))
-            ->whereIn('TIP_DOKUMENTA', ['Корректировка реализации', 'Расчет курсовых разниц', 'Приходный кассовый ордер', 'Списание задолженности', 'Ввод начальных остатков', 'Поступление безналичных денежных средств', 
-            'Операция по платежной карте', 'Взаимозачет задолженности', 'Списание безналичных денежных средств'])
-            ->groupBy('d.GUID', 'd.NAIMENOVANIE', 's.NAIMENOVANIE', 'd.STATUS_PODPISANIYA', 'd.SPOSOB_DOSTAVKI')
-            ->get();
+            ->where('d.KONTRAGENT_GUID', DB::raw('CAST('.$guid.' AS UNIQUEIDENTIFIER)'));
+    
+        if (!empty($request->season)) {
+            $q->where('s.NAIMENOVANIE', $this->getSeason($request->season));
+        }
+    
+        if (!empty($request->year)) {
+            $q->where('d.DATA_NACHALA_DEYSTVIYA', 'like', '%'.$request->year.'%');
+        }
+    
+        $q = $q->groupBy('d.GUID', 'd.NAIMENOVANIE', 'r.TIP_DOKUMENTA', 'd.DATA_NACHALA_DEYSTVIYA', 's.NAIMENOVANIE', 'd.STATUS_PODPISANIYA', 'd.SPOSOB_DOSTAVKI')
+              ->get();
+    
         return bafContractListl::collection($q);
     }
+    
     
     private function getSeason($season)
     {
