@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Browser\\ExampleTest::testSubmittingBIN":4},"times":{"Tests\\Browser\\ExampleTest::testSubmittingBIN":5.724,"Tests\\Unit\\ExampleTest::test_example":0.003,"Tests\\Feature\\ExampleTest::test_example":0.382}}
