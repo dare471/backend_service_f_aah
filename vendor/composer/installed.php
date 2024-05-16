@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c2d6ab596ae43c4708e8656bc161bd517b36bf31',
+        'reference' => '15e7274fda0d4ae58ccfe727828661018ca767e0',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -147,6 +147,12 @@
             'aliases' => array(),
             'reference' => '3c921a1cdba35b68a7f0ccffc6dffc1995b18267',
             'dev_requirement' => true,
+        ),
+        'facebook/webdriver' => array(
+            'dev_requirement' => true,
+            'replaced' => array(
+                0 => '*',
+            ),
         ),
         'fakerphp/faker' => array(
             'pretty_version' => 'v1.20.0',
@@ -439,6 +445,15 @@
                 0 => '*',
             ),
         ),
+        'laravel/dusk' => array(
+            'pretty_version' => 'v6.25.2',
+            'version' => '6.25.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/dusk',
+            'aliases' => array(),
+            'reference' => '25a595ac3dc82089a91af10dd23b0d58fd3f6d0b',
+            'dev_requirement' => true,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v8.83.27',
             'version' => '8.83.27.0',
@@ -454,7 +469,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c2d6ab596ae43c4708e8656bc161bd517b36bf31',
+            'reference' => '15e7274fda0d4ae58ccfe727828661018ca767e0',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -546,15 +561,6 @@
             'aliases' => array(),
             'reference' => '7aa9a27a0b1158ed5ad4e7175e8d3aee9a818b96',
             'dev_requirement' => true,
-        ),
-        'miniorange/saml-laravel-free' => array(
-            'pretty_version' => '2.3.4',
-            'version' => '2.3.4.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../miniorange/saml-laravel-free',
-            'aliases' => array(),
-            'reference' => 'c5947ffb0e800203b1425f80bcc711cabd4a7d05',
-            'dev_requirement' => false,
         ),
         'mockery/mockery' => array(
             'pretty_version' => '1.6.11',
@@ -677,6 +683,15 @@
             'install_path' => __DIR__ . '/../phar-io/version',
             'aliases' => array(),
             'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
+            'dev_requirement' => true,
+        ),
+        'php-webdriver/webdriver' => array(
+            'pretty_version' => '1.15.1',
+            'version' => '1.15.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-webdriver/webdriver',
+            'aliases' => array(),
+            'reference' => 'cd52d9342c5aa738c2e75a67e47a1b6df97154e8',
             'dev_requirement' => true,
         ),
         'phpoption/phpoption' => array(
@@ -862,8 +877,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(

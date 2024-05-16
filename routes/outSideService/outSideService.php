@@ -6,4 +6,5 @@ Route::group([
     'namespace' => 'App\Http\Controllers\user',
 ], function () {
     Route::post("/user/dashboard", "DashboardController@RouteCase");
+   
 });

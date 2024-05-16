@@ -194,6 +194,21 @@ return [
             
         ],
 
+        '__ExternalData' => [
+            'driver' => 'sqlsrv',
+            'host' => '10.200.100.24',
+            'port' => '1433',
+            'database' => '__ExternalData',
+            'username' => 'CRM',
+            'password' => "2983523456Dare",
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict'    => false,
+        ], 
+
         'mongodb' => [
             'driver'   => 'mongodb',
             'host'     => '10.200.101.96',

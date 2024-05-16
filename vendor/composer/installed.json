@@ -1884,6 +1884,82 @@
             "install-path": "../jenssegers/mongodb"
         },
         {
+            "name": "laravel/dusk",
+            "version": "v6.25.2",
+            "version_normalized": "6.25.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/dusk.git",
+                "reference": "25a595ac3dc82089a91af10dd23b0d58fd3f6d0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/25a595ac3dc82089a91af10dd23b0d58fd3f6d0b",
+                "reference": "25a595ac3dc82089a91af10dd23b0d58fd3f6d0b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-zip": "*",
+                "illuminate/console": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "nesbot/carbon": "^2.0",
+                "php": "^7.2|^8.0",
+                "php-webdriver/webdriver": "^1.9.0",
+                "symfony/console": "^4.3|^5.0|^6.0",
+                "symfony/finder": "^4.3|^5.0|^6.0",
+                "symfony/process": "^4.3|^5.0|^6.0",
+                "vlucas/phpdotenv": "^3.0|^4.0|^5.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^4.16|^5.17.1|^6.12.1|^7.0",
+                "phpunit/phpunit": "^7.5.15|^8.4|^9.0"
+            },
+            "suggest": {
+                "ext-pcntl": "Used to gracefully terminate Dusk when tests are running."
+            },
+            "time": "2022-09-29T09:37:07+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Dusk\\DuskServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Dusk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Dusk provides simple end-to-end testing and browser automation.",
+            "keywords": [
+                "laravel",
+                "testing",
+                "webdriver"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/dusk/issues",
+                "source": "https://github.com/laravel/dusk/tree/v6.25.2"
+            },
+            "install-path": "../laravel/dusk"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.83.27",
             "version_normalized": "8.83.27.0",
@@ -2780,63 +2856,6 @@
                 "source": "https://github.com/maximebf/php-debugbar/tree/v1.22.3"
             },
             "install-path": "../maximebf/debugbar"
-        },
-        {
-            "name": "miniorange/saml-laravel-free",
-            "version": "2.3.4",
-            "version_normalized": "2.3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/miniOrangeDev/saml-laravel-free.git",
-                "reference": "c5947ffb0e800203b1425f80bcc711cabd4a7d05"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/miniOrangeDev/saml-laravel-free/zipball/c5947ffb0e800203b1425f80bcc711cabd4a7d05",
-                "reference": "c5947ffb0e800203b1425f80bcc711cabd4a7d05",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": ">=5.2",
-                "php": "^5.1 || ^7.1 || ^8.0"
-            },
-            "time": "2023-11-30T05:52:00+00:00",
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "provider\\ssoServiceProvider"
-                    ]
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "files": [
-                    "src/connector.php"
-                ],
-                "psr-4": {
-                    "provider\\": "provider/"
-                },
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "miniOrange Security Software",
-                    "email": "laravelsupport@xecurify.com"
-                }
-            ],
-            "description": "miniOrange SAML Single Sign on (SSO) plugin acts as a SAML Service Provider which can be configured to establish the trust between the plugin and a SAML capable Identity Providers to securely authenticate the user to the Laravel site. We support all known IdPs – ADFS, Azure AD, Google Apps, Okta, Salesforce, Shibboleth, SimpleSAMLphp, OpenAM, Centrify, Ping, RSA, IBM, Oracle, OneLogin, Bitium, WSO2, NetIQ etc.",
-            "support": {
-                "issues": "https://github.com/miniOrangeDev/saml-laravel-free/issues",
-                "source": "https://github.com/miniOrangeDev/saml-laravel-free/tree/2.3.4"
-            },
-            "install-path": "../miniorange/saml-laravel-free"
         },
         {
             "name": "mockery/mockery",
@@ -3826,6 +3845,75 @@
                 "source": "https://github.com/phar-io/version/tree/3.2.1"
             },
             "install-path": "../phar-io/version"
+        },
+        {
+            "name": "php-webdriver/webdriver",
+            "version": "1.15.1",
+            "version_normalized": "1.15.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-webdriver/php-webdriver.git",
+                "reference": "cd52d9342c5aa738c2e75a67e47a1b6df97154e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/cd52d9342c5aa738c2e75a67e47a1b6df97154e8",
+                "reference": "cd52d9342c5aa738c2e75a67e47a1b6df97154e8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "php": "^7.3 || ^8.0",
+                "symfony/polyfill-mbstring": "^1.12",
+                "symfony/process": "^5.0 || ^6.0 || ^7.0"
+            },
+            "replace": {
+                "facebook/webdriver": "*"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.20.0",
+                "ondram/ci-detector": "^4.0",
+                "php-coveralls/php-coveralls": "^2.4",
+                "php-mock/php-mock-phpunit": "^2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpunit/phpunit": "^9.3",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/var-dumper": "^5.0 || ^6.0"
+            },
+            "suggest": {
+                "ext-SimpleXML": "For Firefox profile creation"
+            },
+            "time": "2023-10-20T12:21:20+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "lib/Exception/TimeoutException.php"
+                ],
+                "psr-4": {
+                    "Facebook\\WebDriver\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A PHP client for Selenium WebDriver. Previously facebook/webdriver.",
+            "homepage": "https://github.com/php-webdriver/php-webdriver",
+            "keywords": [
+                "Chromedriver",
+                "geckodriver",
+                "php",
+                "selenium",
+                "webdriver"
+            ],
+            "support": {
+                "issues": "https://github.com/php-webdriver/php-webdriver/issues",
+                "source": "https://github.com/php-webdriver/php-webdriver/tree/1.15.1"
+            },
+            "install-path": "../php-webdriver/webdriver"
         },
         {
             "name": "phpoption/phpoption",
@@ -9266,6 +9354,7 @@
         "fakerphp/faker",
         "filp/whoops",
         "hamcrest/hamcrest-php",
+        "laravel/dusk",
         "laravel/sail",
         "maximebf/debugbar",
         "mockery/mockery",
@@ -9273,6 +9362,7 @@
         "nunomaduro/collision",
         "phar-io/manifest",
         "phar-io/version",
+        "php-webdriver/webdriver",
         "phpunit/php-code-coverage",
         "phpunit/php-file-iterator",
         "phpunit/php-invoker",
