@@ -3,7 +3,7 @@
 namespace App\Http\Resources\outsideService;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Services\ContractService;
+use App\Http\Services\Contract;
 
 class bafContractList extends JsonResource
 {
@@ -12,7 +12,7 @@ class bafContractList extends JsonResource
     public function __construct($resource)
     {
         parent::__construct($resource);
-        $this->contractService = app(ContractService::class);
+        $this->contractService = app(Contract::class);
     }
 
     /**
@@ -32,6 +32,7 @@ class bafContractList extends JsonResource
             "deliveryMethod" => $this->deliveryMethod,
             "sum" => (float)$this->sum,
             "sumPaid" => $sumPaid,
+            "margin" => (float)$this->margin,
             "debt" => (float)$this->sum - $sumPaid
         ];
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\outsideService;
 
-use App\Http\Services\ContragentService;
+use App\Http\Services\Contract;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class bafClient extends JsonResource
@@ -23,6 +23,6 @@ class bafClient extends JsonResource
 
     private function contractList($request, $guid)
     {
-        return app(ContragentService::class)->contractList($request, $guid);
+        return app(Contract::class)->listContracts($request, $guid);
     }
 }

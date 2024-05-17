@@ -12,7 +12,6 @@ use Illuminate\Support\Carbon;
 
 class ClientAuthController extends Controller
 {
-    // авторизация клиента login: email phone bin, Password остается прежним
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), array(
@@ -32,8 +31,6 @@ class ClientAuthController extends Controller
 
         return $this->respondWithToken($token);
     }
-
-    //регистрация клиента обязательные параметры
     public function register(Request $request)
     {
         $controller = new SmsMessageController();
@@ -41,7 +38,7 @@ class ClientAuthController extends Controller
             'name' => 'required|string|max:255',
             'bin' => 'required|string|unique:clients',
             'phone' => 'required|string|max:16',
-            'email' => 'required|email|min:6', // Убедитесь, что указано правильное имя таблицы
+            'email' => 'required|email|min:6',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
@@ -53,11 +50,9 @@ class ClientAuthController extends Controller
             'name' => $request->name,
             'bin' => $request->bin,
             'phone' => $request->phone,
-            'email' => $request->email, // Проверьте, что email действительно передается сюда
+            'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-
-        // При регистрации создает запись профиля в таблице app_profile
 
         Profile::create([
             'client_id' => $client->id
@@ -68,20 +63,17 @@ class ClientAuthController extends Controller
         return response()->json(['token' => $token]);
     }
 
-    //Мульти логин для авторизации
     protected function attemptLogin(Request $request)
     {
         $credentials = $request->only('email', 'phone', 'bin', 'password');
 
         foreach (['email', 'phone', 'bin'] as $field) {
             if (!empty($credentials[$field])) {
-                // Указываем использование новой гвардии client_api
                 if ($token = auth('client')->attempt([$field => $credentials[$field], 'password' => $credentials['password']])) {
                     return $token;
                 }
             }
         }
-
         return false;
     }
 
@@ -104,10 +96,8 @@ class ClientAuthController extends Controller
                 return response()->json(['error' => 'user_not_found'], 404);
             }
 
-            // Выполняем запрос к модели Profile, чтобы получить профиль пользователя
             $profile = Profile::where('client_id', $user->id)->first();
             $user_pr = ClientAuth::where('bin', $user->bin)->first();
-            // Возвращаем пользователя и его профиль в JSON формате
             return response()->json([
                 'head' => $user_pr,
                 'properties' => $profile
@@ -117,8 +107,6 @@ class ClientAuthController extends Controller
         }
     }
 
-
-    //Подтверждение верфикации по смс
     public function verifyCode(Request $request)
     {
         $request->validate([

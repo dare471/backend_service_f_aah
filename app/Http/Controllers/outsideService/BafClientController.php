@@ -6,30 +6,41 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\outsideService\bafContractDetail;
 use App\Http\Resources\outsideService\bafContractList;
 use App\Http\Resources\outsideService\bafClient;
-use App\Http\Services\ContractService;
-use App\Http\Services\ContragentService;
+use App\Http\Resources\outsideService\statGovClient;
+use App\Http\Services\Contract;
+use App\Http\Services\Contragent;
 use Illuminate\Http\Request;
 
 class BafClientController extends Controller
 {
-   protected $contragentService;
+   protected $clientList;
    protected $contractService;
 
-   public function  __construct(ContragentService $contragentService, ContractService $contractService)
+   public function  __construct(Contragent $clientList, Contract $contractService)
    {
-       $this->contragentService = $contragentService;
+       $this->clientList = $clientList;
        $this->contractService = $contractService;
    }
 
    public function findBin(Request $request)
    {
-       $data = $this->contragentService->findBin($request);
+       $data = $this->clientList->findBin($request);
        return bafClient::collection($data)->all();
+   }
+   public function getClient(Request $request)
+   {
+        $data = $this->clientList->getClient($request);
+        return statGovClient::collection($data)->all();
+   }
+   public function setClient(Request $request)
+   {
+       $data = $this->clientList->setClient($request);
+       return statGovClient::collection($data)->all();
    }
 
    public function listContracts(Request $request)
    {
-       $data = $this->contractService->listContracts($request);
+       $data = $this->contractService->listContracts($request, $request->guidClient);
        return bafContractList::collection($data)->all();
    }
 

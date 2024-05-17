@@ -5,20 +5,9 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class  ContragentService
+class Contract
 {
-    public function findBin(Request $request)
-    {
-        $q = DB::connection('L1')
-            ->table('KONTRAGENTY')
-            ->select('NAIMENOVANIE', 'IIN_BIN', 'FAKT_ADRES_KONTRAGENTA', 'IS_CLIENT', 'BIZNES_REGIONY', DB::raw('CONVERT(NVARCHAR(max), GUID, 1) as GUID'))
-            ->where('IIN_BIN', $request->bin)
-            ->get();
-
-        return $q;
-    }
-
-    public function contractList(Request $request, $guid)
+    public function listContracts(Request $request, $guid)
     {
         $q = DB::connection('L1')
             ->table('DOGOVORY_KONTRAGENTOV as d')
@@ -27,6 +16,7 @@ class  ContragentService
                 'd.NAIMENOVANIE as name',
                 'd.DATA_NACHALA_DEYSTVIYA as date',
                 'd.PROGRAMMA_DOGOVORA as programContract',
+                'd.MARZHINALNOST as margin',
                 DB::raw('s.NAIMENOVANIE as season'),
                 'd.STATUS_PODPISANIYA as signatureStatus',
                 'd.SPOSOB_DOSTAVKI as deliveryMethod',
@@ -51,10 +41,44 @@ class  ContragentService
                 's.NAIMENOVANIE',
                 'd.PROGRAMMA_DOGOVORA',
                 'd.STATUS_PODPISANIYA',
+                'd.MARZHINALNOST',
                 'd.SPOSOB_DOSTAVKI'
             )->get();
 
         return $q;
+    }
+    public function detailContract(Request $request)
+    {
+        $q = DB::connection('L1')
+            ->table('SPETSIFIKATSIYA_PO_DOGOVORU as p')
+            ->select('p.PERIOD', 'p.VIDY_KULTUR', 'p.KOLICHESTVO', 'p.TSENA', 'n.KATEGORII_NOMENKLATURY_GROUP','p.SUMMA', 'n.NAIMENOVANIE', DB::raw('CONVERT(NVARCHAR(max), p.NOMENKLATURA_GUID, 1) as NOMENKLATURA_GUID'))
+            ->join('NOMENKLATURA as n', 'n.GUID', 'p.NOMENKLATURA_GUID')
+            ->where('DOGOVOR_GUID', DB::raw('CAST('.$request->guidContract.' AS UNIQUEIDENTIFIER)'))
+            ->get();
+
+        return $q;
+    }
+
+    public function getHistoryOperation($guidContract)
+    {
+        $q = DB::connection('L1')
+            ->table('RASCHETY_S_KLIENTAMI_PO_DOKUMENTAM as rk')
+            ->select(DB::raw('SUM(SUMMA_KZT) as sumPaid'))
+            ->where('rk.DOGOVOR_GUID', DB::raw('CAST('.$guidContract.' AS UNIQUEIDENTIFIER)'))
+            ->whereIn('TIP_DOKUMENTA', [
+                'Корректировка реализации',
+                'Расчет курсовых разниц',
+                'Приходный кассовый ордер',
+                'Списание задолженности',
+                'Ввод начальных остатков',
+                'Поступление безналичных денежных средств',
+                'Операция по платежной карте',
+                'Взаимозачет задолженности',
+                'Списание безналичных денежных средств'
+            ])
+            ->first();
+
+        return (float)$q->sumPaid ?? 0;
     }
 
     private function getSeason($season)
@@ -90,5 +114,21 @@ class  ContragentService
             default:
                 return "Сезон не определен";
         }
+    }
+    public function getProduct($guid)
+    {
+        return DB::connection('L1')
+            ->table('NOMENKLATURA')
+            ->select('NAIMENOVANIE')
+            ->where('GUID', DB::raw('CAST('.$guid.' AS UNIQUEIDENTIFIER)'))
+            ->get();
+    }
+
+    public function getNameContract($request){
+        return DB::connection('L1')
+            ->table('DOGOVORY_KONTRAGENTOV')
+            ->where('GUID', $request->contractGuid)
+            ->get();
+
     }
 }
