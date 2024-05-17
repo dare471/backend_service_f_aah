@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\outsideService\BafClientController;
-use App\Http\Controllers\outsideService\Gis;
+use App\Http\Controllers\externalServices\BafController;
+use App\Http\Controllers\externalServices\Gis;
 use Illuminate\Support\Facades\Route;
 
 require_once __DIR__.'/client/client.php';
@@ -14,8 +14,8 @@ require_once __DIR__.'/user/user.php';
 Route::post('/maps/coordinate_receive', [Gis::class, 'searchPointAddress']);
 
 //baf controller
-Route::post('/baf/find-bin', [BafClientController::class, 'findBin']);
-Route::post('/baf/list-contracts', [BafClientController::class, 'listContracts']);
-Route::post('/baf/detail-contract', [BafClientController::class, 'detailContract']);
-Route::post('/schedule/bin/get', [BafClientController::class, 'getClient']);
-Route::post('/schedule/bin/set', [BafClientController::class, 'getClient']);
+Route::post('/baf/find-bin', [BafController::class, 'findBin']);
+Route::post('/baf/list-contracts', [BafController::class, 'listContracts']);
+Route::post('/baf/detail-contract', [BafController::class, 'detailContract']);
+Route::post('/schedule/bin/get', [BafController::class, 'getClient']);
+Route::post('/schedule/bin/set', [BafController::class, 'getClient']);

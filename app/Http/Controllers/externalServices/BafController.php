@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\outsideService;
+namespace App\Http\Controllers\externalServices;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\outsideService\bafContractDetail;
@@ -11,7 +11,7 @@ use App\Http\Services\Contract;
 use App\Http\Services\Contragent;
 use Illuminate\Http\Request;
 
-class BafClientController extends Controller
+class BafController extends Controller
 {
    protected $clientList;
    protected $contractService;
@@ -25,7 +25,7 @@ class BafClientController extends Controller
    public function findBin(Request $request)
    {
        $data = $this->clientList->findBin($request);
-       return bafClient::collection($data)->all();
+       return BafController::collection($data)->all();
    }
    public function getClient(Request $request)
    {
