@@ -2,7 +2,7 @@
 
 namespace App\Services\Client;
 
-use App\Repositories\Order\OrderRepository;
+use App\Repositories\Client\Order\OrderRepository;
 
 class OrderService
 {

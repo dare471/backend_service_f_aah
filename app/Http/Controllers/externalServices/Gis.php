@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\externalServices;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\LocationAddress;
+use App\Services\LocationAddress;
 use Illuminate\Http\Request;
 
 class Gis extends Controller

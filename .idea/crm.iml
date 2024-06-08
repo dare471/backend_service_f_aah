@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/_laravel_idea" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/adldap2/adldap2" />
@@ -134,6 +135,27 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/dusk" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-webdriver/webdriver" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/math" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phpword" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/erusev/parsedown" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knuckleswtf/pastel" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knuckleswtf/scribe" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mnapoli/front-yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mnapoli/silly" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mpociot/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-di/invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/shalvah/clara" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/windwalker/renderer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/windwalker/structure" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/breeze" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ashallendesign/short-url" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hashids/hashids" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jaybizzle/crawler-detect" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jenssegers/agent" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mobiledetect/mobiledetectlib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

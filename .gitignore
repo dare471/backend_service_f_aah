@@ -5,3 +5,4 @@ final_2020.geojson
 app/Console/Kernel.php
 # app/Http/Controllers/client/clientprofile/ProfileController.php
 .env
+/node_modules/
