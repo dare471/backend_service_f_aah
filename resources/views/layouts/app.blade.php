@@ -1,16 +1,8 @@
-<!-- Stored in resources/views/layouts/master.blade.php -->
- 
-<html>
-    <head>
-        <title>App Name - @yield('title')</title>
-    </head>
-    <body>
-        @section('sidebar')
-            This is the master sidebar.
-        @show
- 
-        <div class="container">
-            @yield('content')
-        </div>
-    </body>
-</html>
+<!-- resources/views/layouts/app.blade.php -->
+@include('partials.header')
+
+<div class="content">
+    @yield('content')
+</div>
+
+@include('partials.footer')

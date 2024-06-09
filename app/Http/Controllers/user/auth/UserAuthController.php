@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\user\auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\Auth;
 use Illuminate\Http\Request;
-use App\Http\Services\Auth;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserAuthController extends Controller
 {
@@ -17,6 +17,15 @@ class UserAuthController extends Controller
         $this->authService = $authService;
     }
 
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
