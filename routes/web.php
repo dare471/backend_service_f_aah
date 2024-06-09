@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\user\auth\LoginController;
+use App\Http\Controllers\user\document\GenerateDocument;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\externalServices\Client\Order\Order as OrderClient;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// routes/web.php
+
 Route::get('/', function () {
-    return response()->json([
-        "message" => "Hi, this service works only as an API."
-    ]);
+    return view('dashboard');
 });
 
+Route::get('/generate-document/docx', [GenerateDocument::class, 'createDocs']);
+Route::get('/generate-document/pdf', [GenerateDocument::class, 'createPDF']);
+Route::get('/order/{orderGuid}/client', [OrderClient::class, 'getOrder'])->name('order.client');
 
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/order/{orderGuid}/client/shorten', [OrderClient::class, 'createShortURL']);
 // $router->group(['prefix' => 'api'], function () use ($router) {
 // });
