@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\externalServices\Client\Order;
+namespace App\Http\Controllers\externalServices\Client\Contract;
 
 use App\Http\Controllers\Controller;
 use App\Services\Client\OrderService;
 use App\Services\Utilities\ShortURLService;
 
-class Order extends Controller
+class ContractMainLayer extends Controller
 {
     protected $orderForClient;
     protected $shortURLService;

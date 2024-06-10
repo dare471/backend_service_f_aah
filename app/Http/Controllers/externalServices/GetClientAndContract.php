@@ -11,7 +11,7 @@ use App\Services\Baf\ContractService;
 use App\Services\ContragentService;
 use Illuminate\Http\Request;
 
-class Baf extends Controller
+class GetClientAndContract extends Controller
 {
    protected $clientList;
    protected $contractService;

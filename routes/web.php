@@ -3,7 +3,7 @@
 use App\Http\Controllers\user\auth\LoginController;
 use App\Http\Controllers\user\document\GenerateDocument;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\externalServices\Client\Order\Order as OrderClient;
+use App\Http\Controllers\externalServices\Client\Contract\ContractMainLayer as OrderClient;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,6 @@ Route::get('/generate-document/docx', [GenerateDocument::class, 'createDocs']);
 Route::get('/generate-document/pdf', [GenerateDocument::class, 'createPDF']);
 Route::get('/order/{orderGuid}/client', [OrderClient::class, 'getOrder'])->name('order.client');
 
-Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 

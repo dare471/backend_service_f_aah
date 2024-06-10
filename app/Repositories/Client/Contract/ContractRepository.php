@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Client\Order;
+namespace App\Repositories\Client\Contract;
 
 use Illuminate\Support\Facades\DB;
 
-class OrderRepository
+class ContractRepository
 {
     public function getOrder($orderGuid): \Illuminate\Support\Collection
     {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\LocationAddress;
 use Illuminate\Http\Request;
 
-class Gis extends Controller
+class GetDistanceWithAdress extends Controller
 {
     protected $locationAddressPoint;
     public function __construct(LocationAddress $locationAddressPoint)
