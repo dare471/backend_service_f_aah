@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\externalServices\Client\Profile;
 use App\Http\Controllers\Controller;
 
-class Card extends Controller
+class CardMainLayer extends Controller
 {
    protected $cardClient;
    public function __construct($cardClient)

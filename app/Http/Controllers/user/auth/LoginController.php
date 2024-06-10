@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\user\auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\Staff\AuthServiceLayer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    protected $authServiceLayer;
+
+    public function __contruct(AuthServiceLayer  $authServiceLayer)
     {
-        return view('auth.login');
+        $this->authServiceLayer = $authServiceLayer;
     }
 
     public function login(Request $request)
